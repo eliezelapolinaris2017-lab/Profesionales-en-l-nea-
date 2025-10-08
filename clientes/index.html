@@ -1,100 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Servicios PRO – Registro</title>
-  <style>
-    body{
-      margin:0; font-family:system-ui,Segoe UI,Roboto,Arial;
-      background:#0b0f16; color:#e6edf3;
-      display:flex; justify-content:center; padding:28px;
-    }
-    .wrap{
-      width:min(560px,96vw); background:#111827;
-      border:1px solid #1f2a3a; border-radius:16px; padding:22px;
-      box-shadow:0 10px 28px rgba(0,0,0,.55);
-    }
-    .brand{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-    .brand img{width:48px;height:48px;border-radius:10px;object-fit:contain;border:1px solid #23314c;background:#0b1220}
-    .brand-name{font-weight:800;font-size:20px}
-    .brand-accent{color:#ffd21f}
-    h2{margin:6px 0 14px;text-align:center;color:#ffd21f}
-    input,textarea{
-      width:100%; padding:12px; margin:8px 0;
-      border-radius:10px; border:1px solid #25314a;
-      background:#0c1220; color:#e6edf3; font-size:14px;
-    }
-    textarea{resize:vertical; min-height:84px}
-    label.chk{display:flex;align-items:center;gap:8px;margin:8px 0}
-    button{
-      width:100%; padding:12px; border-radius:12px;
-      background:#ffd21f; color:#151515; border:1px solid #6a5f00;
-      font-weight:700; cursor:pointer; margin-top:10px
-    }
-    button:hover{background:#ffe057}
-    .hint{margin-top:10px;text-align:center;color:#9aa4b2;font-size:13px}
-    .ok{color:#9be28f}.err{color:#ff8a8a}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Servicios PRO – Registro</title>
+<style>
+:root{
+--bg:#0b0f16; --panel:#111827; --panel2:#0c1220;
+--ink:#e6edf3; --muted:#9aa4b2; --line:#1f2a3a;
+--accent:#ffd21f; --accent-ink:#151515;
+--radius:16px;
+}
+*{box-sizing:border-box}
+body{
+margin:0; font-family:system-ui,Segoe UI,Roboto,Arial;
+background:var(--bg); color:var(--ink);
+display:flex; justify-content:center; padding:28px;
+}
+.wrap{
+width:min(560px,96vw);
+background:var(--panel); border:1px solid var(--line);
+border-radius:var(--radius); padding:22px;
+box-shadow:0 10px 28px rgba(0,0,0,.55);
+}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.brand img{width:48px;height:48px;border-radius:10px;object-fit:contain;border:1px solid #23314c;background:#0b1220}
+.brand-name{font-weight:800;font-size:20px}
+.brand-accent{color:var(--accent)}
+h2{margin:8px 0 14px;text-align:center;color:var(--accent)}
+input,textarea{
+width:100%; padding:12px; margin:8px 0;
+border-radius:12px; border:1px solid #25314a;
+background:var(--panel2); color:var(--ink); font-size:14px;
+}
+textarea{resize:vertical; min-height:84px}
+.row{display:flex;justify-content:space-between;align-items:center}
+.chk{display:flex;align-items:center;gap:8px;margin:6px 0}
+button{
+width:100%; padding:12px; border-radius:12px;
+background:var(--accent); color:var(--accent-ink); border:1px solid #6a5f00;
+font-weight:700; cursor:pointer; margin-top:12px
+}
+button:hover{filter:brightness(1.05)}
+.hint{margin-top:10px;text-align:center;color:var(--muted);font-size:13px}
+.ok{color:#9be28f}.err{color:#ff8a8a}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="brand">
-      <img src="logo.png" alt="Servicios PRO">
-      <div class="brand-name">SERVICIOS <span class="brand-accent">PRO</span></div>
-    </div>
-    <h2>Registro de Profesional</h2>
+<div class="wrap">
+<div class="brand">
+<img src="logo.png" alt="Servicios PRO">
+<div class="brand-name">SERVICIOS <span class="brand-accent">PRO</span></div>
+</div>
+<h2>Registro de Profesional</h2>
 
-    <form id="regForm" novalidate>
-      <input name="nombre"     placeholder="Nombre*" required>
-      <input name="telefono"   placeholder="Teléfono">
-      <input name="categoria"  placeholder="Categoría">
-      <input name="pueblo"     placeholder="Pueblo">
-      <textarea name="servicios"   placeholder="Servicios (coma separada)"></textarea>
-      <textarea name="descripcion" placeholder="Descripción"></textarea>
-      <input name="foto"       placeholder="Foto (URL pública)">
-      <label class="chk"><input type="checkbox" name="activo" value="TRUE" checked> Activo</label>
-      <button type="submit">Enviar</button>
-      <p id="msg" class="hint"></p>
-    </form>
-  </div>
+<form id="regForm" novalidate>
+<input name="nombre" placeholder="Nombre*" required>
+<input name="telefono" placeholder="Teléfono">
+<input name="categoria" placeholder="Categoría">
+<input name="pueblo" placeholder="Pueblo">
+<textarea name="servicios" placeholder="Servicios (coma separada)"></textarea>
+<textarea name="descripcion" placeholder="Descripción"></textarea>
+<input name="foto" placeholder="Foto (URL pública)">
+<div class="row">
+<label class="chk"><input type="checkbox" name="activo" value="TRUE" checked> Activo</label>
+</div>
+<button type="submit">Enviar</button>
+<p id="msg" class="hint"></p>
+</form>
+</div>
 
-  <script>
-  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyu41KMQnYCHohpEdiyEOzKpMlnhlN15H7B8HAjSmidQQhVSQUBU7tyC3VhiUaA3zj_/exec';
+<script>
+// Tu endpoint /exec (el más reciente que me diste)
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyu41KMQnYCHohpEdiyEOzKpMlnhlN15H7B8HAjSmidQQhVSQUBU7tyC3VhiUaA3zj_/exec';
 
-  const form = document.getElementById('regForm');
-  const msg  = document.getElementById('msg');
+const form = document.getElementById('regForm');
+const msg = document.getElementById('msg');
 
-  form.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    msg.textContent = 'Enviando…'; msg.className = 'hint';
+form.addEventListener('submit', async (e)=>{
+e.preventDefault();
+msg.textContent = 'Enviando…'; msg.className = 'hint';
 
-    const fd = new FormData(form);         // ← enviamos como FormData (e.parameter en GAS)
-    if(!fd.get('nombre')?.trim()){
-      msg.textContent = 'El nombre es requerido.'; msg.className = 'hint err'; return;
-    }
-    // normaliza URL foto a https
-    if(fd.get('foto')) fd.set('foto', String(fd.get('foto')).trim().replace(/^http:\/\//i,'https://'));
+const fd = new FormData(form);
 
-    try{
-      const res  = await fetch(ENDPOINT, { method:'POST', body: fd });
-      const text = await res.text();
-      let json   = {};
-      try{ json = JSON.parse(text); }catch{}
+// validaciones mínimas
+if(!fd.get('nombre') || !String(fd.get('nombre')).trim()){
+msg.textContent = 'El nombre es requerido.'; msg.className = 'hint err'; return;
+}
+// normaliza URL a https
+if(fd.get('foto')) fd.set('foto', String(fd.get('foto')).trim().replace(/^http:\/\//i,'https://'));
 
-      if(json.status === 'ok'){
-        msg.textContent = '¡Enviado y guardado en la hoja! ✅';
-        msg.className = 'hint ok';
-        form.reset();
-      }else{
-        msg.textContent = 'Error del servidor: ' + (json.message || text || 'desconocido');
-        msg.className = 'hint err';
-      }
-    }catch(err){
-      msg.textContent = 'No se pudo enviar: ' + err.message;
-      msg.className = 'hint err';
-    }
-  });
-  </script>
+try{
+const res = await fetch(ENDPOINT, { method:'POST', body: fd });
+const text = await res.text();
+let json = {}; try { json = JSON.parse(text); } catch { json = { raw:text }; }
+
+if (json.ok === true || json.status === 'ok') {
+msg.textContent = '¡Enviado y guardado en la hoja! ✅';
+msg.className = 'hint ok';
+form.reset();
+} else {
+msg.textContent = 'Error del servidor: ' + (json.error || json.raw || 'desconocido');
+msg.className = 'hint err';
+}
+} catch(err){
+msg.textContent = 'No se pudo enviar: ' + err.message;
+msg.className = 'hint err';
+}
+});
+</script>
 </body>
 </html>
