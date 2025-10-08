@@ -280,3 +280,6 @@ function fixDriveUrl(url){
 
   return url;
 }
+const urlOriginal = item.foto || item.photo;
+const urlFinal = fixDriveUrl(urlOriginal);
+img.src = urlFinal;
