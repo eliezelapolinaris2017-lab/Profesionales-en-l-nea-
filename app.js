@@ -1,5 +1,5 @@
 /* URL del Apps Script publicado */
-const REMOTE_JSON_URL = 'https://script.google.com/macros/s/TU_ID/exec';
+const REMOTE_JSON_URL = 'https://script.google.com/macros/s/AKfycbwviVzm7LMcsobKjZ460oIWDHm-8W-0vCakLNNZZxNYbtwM3UCyUXG9PtP0d_g-PpT8/exec';
 
 let DB = { categories: [], towns: [], pros: [] };
 const isAdmin = new URLSearchParams(location.search).get('admin') === '1';
