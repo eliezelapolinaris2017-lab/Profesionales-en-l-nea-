@@ -1,113 +1,110 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Servicios PRO – Registro</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Formulario PROS</title>
 <style>
-:root{
---bg:#0b0f16; --panel:#111827; --panel2:#0c1220;
---ink:#e6edf3; --muted:#9aa4b2; --line:#1f2a3a;
---accent:#ffd21f; --accent-ink:#151515;
---radius:16px;
-}
-*{box-sizing:border-box}
-body{
-margin:0; font-family:system-ui,Segoe UI,Roboto,Arial;
-background:var(--bg); color:var(--ink);
-display:flex; justify-content:center; padding:28px;
-}
-.wrap{
-width:min(560px,96vw);
-background:var(--panel); border:1px solid var(--line);
-border-radius:var(--radius); padding:22px;
-box-shadow:0 10px 28px rgba(0,0,0,.55);
-}
-.brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-.brand img{width:48px;height:48px;border-radius:10px;object-fit:contain;border:1px solid #23314c;background:#0b1220}
-.brand-name{font-weight:800;font-size:20px}
-.brand-accent{color:var(--accent)}
-h2{margin:8px 0 14px;text-align:center;color:var(--accent)}
-input,textarea{
-width:100%; padding:12px; margin:8px 0;
-border-radius:12px; border:1px solid #25314a;
-background:var(--panel2); color:var(--ink); font-size:14px;
-}
-textarea{resize:vertical; min-height:84px}
-.row{display:flex;justify-content:space-between;align-items:center}
-.chk{display:flex;align-items:center;gap:8px;margin:6px 0}
-button{
-width:100%; padding:12px; border-radius:12px;
-background:var(--accent); color:var(--accent-ink); border:1px solid #6a5f00;
-font-weight:700; cursor:pointer; margin-top:12px
-}
-button:hover{filter:brightness(1.05)}
-.hint{margin-top:10px;text-align:center;color:var(--muted);font-size:13px}
-.ok{color:#9be28f}.err{color:#ff8a8a}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#0e1a24;color:#e8f0f6;margin:0;padding:20px}
+h1{margin-top:0}
+input,button{padding:10px;border-radius:6px;border:1px solid #173245;margin:5px 0;width:100%}
+button{cursor:pointer;background:#4cc2ff;color:#022433;border:none}
+#tabla table{width:100%;border-collapse:collapse;margin-top:15px}
+#tabla th,#tabla td{border:1px solid #173245;padding:8px;text-align:left}
+#tabla th{background:#0f2230}
+pre{background:#0c1c28;padding:10px;border-radius:6px;white-space:pre-wrap}
 </style>
 </head>
 <body>
-<div class="wrap">
-<div class="brand">
-<img src="logo.png" alt="Servicios PRO">
-<div class="brand-name">SERVICIOS <span class="brand-accent">PRO</span></div>
-</div>
-<h2>Registro de Profesional</h2>
 
-<form id="regForm" novalidate>
-<input name="nombre" placeholder="Nombre*" required>
-<input name="telefono" placeholder="Teléfono">
-<input name="categoria" placeholder="Categoría">
-<input name="pueblo" placeholder="Pueblo">
-<textarea name="servicios" placeholder="Servicios (coma separada)"></textarea>
-<textarea name="descripcion" placeholder="Descripción"></textarea>
-<input name="foto" placeholder="Foto (URL pública)">
-<div class="row">
-<label class="chk"><input type="checkbox" name="activo" value="TRUE" checked> Activo</label>
-</div>
-<button type="submit">Enviar</button>
-<p id="msg" class="hint"></p>
-</form>
-</div>
+<h1>Formulario PROS</h1>
 
 <script>
-// Tu endpoint /exec (el más reciente que me diste)
-const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyu41KMQnYCHohpEdiyEOzKpMlnhlN15H7B8HAjSmidQQhVSQUBU7tyC3VhiUaA3zj_/exec';
-
-const form = document.getElementById('regForm');
-const msg = document.getElementById('msg');
-
-form.addEventListener('submit', async (e)=>{
-e.preventDefault();
-msg.textContent = 'Enviando…'; msg.className = 'hint';
-
-const fd = new FormData(form);
-
-// validaciones mínimas
-if(!fd.get('nombre') || !String(fd.get('nombre')).trim()){
-msg.textContent = 'El nombre es requerido.'; msg.className = 'hint err'; return;
-}
-// normaliza URL a https
-if(fd.get('foto')) fd.set('foto', String(fd.get('foto')).trim().replace(/^http:\/\//i,'https://'));
-
-try{
-const res = await fetch(ENDPOINT, { method:'POST', body: fd });
-const text = await res.text();
-let json = {}; try { json = JSON.parse(text); } catch { json = { raw:text }; }
-
-if (json.ok === true || json.status === 'ok') {
-msg.textContent = '¡Enviado y guardado en la hoja! ✅';
-msg.className = 'hint ok';
-form.reset();
-} else {
-msg.textContent = 'Error del servidor: ' + (json.error || json.raw || 'desconocido');
-msg.className = 'hint err';
-}
-} catch(err){
-msg.textContent = 'No se pudo enviar: ' + err.message;
-msg.className = 'hint err';
-}
-});
+// TU URL ACTUAL (cambiará si vuelves a desplegar):
+const API_URL = "https://script.google.com/macros/s/AKfycbyuOOoTvV0Ut1UPYCnSS9cMzVFK0qcXqxa8zADJ66jMTw1EqEQth7Eaw6R7QFnf707t/exec";
 </script>
+
+<form id="form">
+<label>Nombre</label>
+<input id="nombre" required>
+
+<label>Teléfono</label>
+<input id="telefono">
+
+<label>Email</label>
+<input id="email" type="email">
+
+<label>Servicio</label>
+<input id="servicio">
+
+<button type="submit">Guardar en PROS</button>
+</form>
+
+<h2>Buscar</h2>
+<input id="buscar" placeholder="Escribe algo...">
+<button onclick="buscar()">Buscar</button>
+<button onclick="listar()">Listar todo</button>
+
+<h2>Resultados</h2>
+<div id="tabla"></div>
+<pre id="out"></pre>
+
+<script>
+async function apiGet(params={}) {
+const qs = new URLSearchParams(params).toString();
+const url = qs ? `${API_URL}?${qs}` : API_URL;
+const res = await fetch(url);
+return res.json();
+}
+async function apiPost(payload={}) {
+const res = await fetch(API_URL, {
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify(payload)
+});
+return res.json();
+}
+
+document.getElementById("form").addEventListener("submit", async e=>{
+e.preventDefault();
+const payload = {
+nombre: document.getElementById("nombre").value,
+telefono: document.getElementById("telefono").value,
+email: document.getElementById("email").value,
+servicio: document.getElementById("servicio").value
+};
+const data = await apiPost(payload);
+document.getElementById("out").textContent = JSON.stringify(data,null,2);
+listar();
+});
+
+async function listar(){
+const data = await apiGet({action:"list"});
+render(data);
+}
+async function buscar(){
+const q = document.getElementById("buscar").value;
+const data = await apiGet(q?{q}: {action:"list"});
+render(data);
+}
+
+function render(res){
+document.getElementById("out").textContent = JSON.stringify(res,null,2);
+const cont = document.getElementById("tabla");
+cont.innerHTML="";
+if(!res.success || !res.data || !res.data.length){ cont.textContent="Sin resultados"; return; }
+const cols = Object.keys(res.data[0]);
+let html = "<table><thead><tr>"+cols.map(c=>`<th>${c}</th>`).join("")+"</tr></thead><tbody>";
+res.data.forEach(r=>{
+html += "<tr>"+cols.map(c=>`<td>${r[c]??""}</td>`).join("")+"</tr>";
+});
+html += "</tbody></table>";
+cont.innerHTML=html;
+}
+
+listar();
+</script>
+
 </body>
 </html>
+
