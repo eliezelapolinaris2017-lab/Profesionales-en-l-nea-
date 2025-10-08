@@ -1,0 +1,77 @@
+:root{
+  --bg:#0d0d0d;              /* fondo sólido oscuro neutro */
+  --panel:#1a1a1a;           /* paneles */
+  --panel2:#222;             /* inputs/controles */
+  --ink:#f0f0f0;             /* texto principal */
+  --muted:#aaa;              /* texto secundario */
+  --line:#333;               /* bordes */
+  --accent:#ffd21f;          /* dorado */
+  --accent-ink:#151515;
+  --chip:#2a2a2a;
+  --radius:16px;
+}
+
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:15px system-ui,Segoe UI,Roboto,Arial;
+}
+
+/* Header */
+.topbar{
+  position:sticky; top:0; z-index:10;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:12px 16px;
+  background:#111; border-bottom:1px solid var(--line);
+}
+.logo{
+  width:40px; height:40px; border-radius:8px;
+  border:1px solid #444; background:#1a1a1a;
+  object-fit:contain;
+}
+.brand-name{font-weight:800; letter-spacing:.2px}
+.brand-accent{color:var(--accent)}
+
+/* Botones */
+.btn{
+  padding:10px 14px; border-radius:12px; border:1px solid #444;
+  background:var(--panel2); color:var(--ink); cursor:pointer;
+}
+.btn.primary{background:var(--accent); color:var(--accent-ink); border-color:#6a5f00}
+.btn.outline{background:transparent}
+
+/* Contenedores */
+.card{
+  background:var(--panel); border:1px solid var(--line);
+  border-radius:var(--radius); padding:16px; margin:14px 0;
+}
+.card-pro{
+  background:#1a1a1a; border:1px solid var(--line);
+  border-radius:18px; padding:16px;
+}
+
+/* Inputs */
+.filters select, .filters input{
+  padding:12px; border-radius:12px; border:1px solid var(--line);
+  background:var(--panel2); color:var(--ink);
+}
+
+/* Footer */
+.footer{
+  padding:18px; text-align:center; color:var(--muted);
+  border-top:1px solid var(--line); background:#111;
+}
+
+/* Login */
+.login{
+  border:none; border-radius:14px; padding:18px;
+  background:#1a1a1a; color:var(--ink);
+  width:min(420px, 96vw);
+}
+.login input{
+  width:100%; margin:8px 0 10px; padding:12px; border-radius:10px;
+  border:1px solid #444; background:#222; color:var(--ink);
+}
