@@ -1,6 +1,6 @@
 /* ======== CONFIG ======== */
 // URL del Apps Script (/exec)
-const REMOTE_JSON_URL = 'https://script.google.com/macros/s/TU_ID/exec';
+const REMOTE_JSON_URL = 'https://script.google.com/macros/s/AKfycbwr0MszUhAr-rHVdy5Azpu274g8Q0wb-8PXHUARfYJ1An1lreL_y71ByR16HUxMunI0/exec';
 
 // Cambia esta contraseña por la tuya (solo para admin). Se hashea en el cliente.
 const ADMIN_PASSWORD = 'Tu-Contraseña-Segura-2025';
