@@ -1,0 +1,52 @@
+<form id="ui" novalidate>
+  <input id="f_name" placeholder="Nombre" required>
+  <input id="f_phone" placeholder="Teléfono">
+  <input id="f_category" placeholder="Categoría">
+  <input id="f_town" placeholder="Pueblo">
+  <textarea id="f_services" placeholder="Servicios (coma separada)"></textarea>
+  <textarea id="f_bio" placeholder="Descripción"></textarea>
+  <input id="f_photo" placeholder="Foto (URL pública)">
+  <label><input type="checkbox" id="f_active"> Activo</label>
+  <button type="submit">Enviar</button>
+  <p id="msg" class="hint"></p>
+</form>
+
+<script>
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxAmFiJVUXrTX1C6e7AUGQ4sDddaZUaBZyzYJfITrnoWbu2bpy9PhjyUjPj8QYrWOCO/exec';
+
+const $ = s => document.querySelector(s);
+function https(u){ if(!u) return ''; return String(u).trim().replace(/^http:\/\//i,'https://'); }
+
+$('#ui').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const msg = $('#msg'); msg.textContent = 'Enviando…';
+
+  const payload = {
+    nombre:   $('#f_name').value.trim(),
+    telefono: $('#f_phone').value.trim(),
+    categoria:$('#f_category').value.trim(),
+    pueblo:   $('#f_town').value.trim(),
+    servicios: $('#f_services').value.split(',').map(s=>s.trim()).filter(Boolean),
+    descripcion: $('#f_bio').value.trim(),
+    foto:     https($('#f_photo').value),
+    activo:   $('#f_active').checked
+  };
+
+  try{
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const json = await res.json();
+    if(json.ok){
+      msg.textContent = '¡Enviado y guardado en la hoja! ✅';
+      $('#ui').reset();
+    }else{
+      msg.textContent = 'Error del servidor: ' + (json.error||'');
+    }
+  }catch(err){
+    msg.textContent = 'No se pudo enviar: ' + err.message;
+  }
+});
+</script>
