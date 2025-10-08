@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Servicios Pro – Directorio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <h1>Servicios Pro</h1>
+  <p class="muted">Encuentra profesionales en Puerto Rico</p>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <div class="filtros">
+      <select id="fCategory"><option value="">Todas las categorías</option></select>
+      <select id="fTown"><option value="">Todos los pueblos</option></select>
+      <input id="fQuery" type="search" placeholder="Buscar por nombre o servicio…">
+      <button id="filterBtn" class="btn">Buscar</button>
+      <button id="clearBtn" class="btn outline">Limpiar</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th>Foto</th><th>Nombre</th><th>Teléfono</th><th>Categoría</th><th>Pueblo</th><th>Servicios</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+</main>
+
+<footer class="foot">
+  <small>&copy; <span id="year"></span> Servicios Pro</small>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
