@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "updatedAt": "2025-10-07T12:00:00Z",
+  "categories": [
+    "Mecánica Automotriz",
+    "Aire Acondicionado Automotriz",
+    "Aire Acondicionado Residencial",
+    "Aire Acondicionado Comercial",
+    "Pintor",
+    "Handy Man"
+  ],
+  "towns": [
+    "San Juan","Bayamón","Carolina","Guaynabo","Caguas","Toa Baja","Toa Alta","Trujillo Alto",
+    "Ponce","Mayagüez","Arecibo","Humacao","Fajardo","Cataño","Dorado","Vega Baja","Vega Alta",
+    "Manatí","Isabela","Aguadilla","Cabo Rojo","Yauco","Guayama","Hatillo","Camuy","Quebradillas",
+    "Barceloneta","Utuado","Cidra","Comerío","Juncos","Canóvanas","Loíza","Río Grande","Luquillo",
+    "Naguabo","Las Piedras","Gurabo","Aibonito","Barranquitas","Corozal","Morovis","Orocovis",
+    "Villalba","Coamo","Santa Isabel","Salinas","Juana Díaz","Peñuelas","Guánica","Lajas","San Germán",
+    "Hormigueros","Moca","San Sebastián","Añasco","Rincón","Lares","Adjuntas","Maricao","Sabana Grande",
+    "Guayanilla","Ciales","Florida","Aguas Buenas","Culebra","Vieques"
+  ],
+  "pros": [
+    {
+      "id": "pro-001",
+      "name": "José Rivera",
+      "phone": "787-555-1111",
+      "category": "Mecánica Automotriz",
+      "town": "Bayamón",
+      "services": ["Diagnóstico", "Frenos", "Cambio de aceite"],
+      "bio": "Mecánico ASE. 10+ años. Toyota/Honda/Nissan.",
+      "photo": null
+    },
+    {
+      "id": "pro-002",
+      "name": "AC Master PR",
+      "phone": "787-555-2222",
+      "category": "Aire Acondicionado Residencial",
+      "town": "San Juan",
+      "services": ["Instalación minisplit","Mantenimiento","Carga de gas"],
+      "bio": "Especialistas en inverter y eficiencia.",
+      "photo": null
+    },
+    {
+      "id": "pro-003",
+      "name": "Pintor Luis",
+      "phone": "787-555-3333",
+      "category": "Pintor",
+      "town": "Carolina",
+      "services": ["Interior","Exterior","Impermeabilización"],
+      "bio": "Acabados profesionales y garantías.",
+      "photo": null
+    }
+  ]
+}
