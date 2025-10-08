@@ -1,5 +1,5 @@
 /* ========= CONFIG ========= */
-const REMOTE_JSON_URL = "https://eliezelapolinaris2017-lab.github.io/Profesionales-en-l-nea-/data.json";
+const REMOTE_JSON_URL = "https://script.google.com/macros/s/AKfycbzgcIaf3Rj0HYEIG9q9upbCW2R9FcO6KOebr-mbSwJ3z-Fw2pGGqhcKrENqB_lUxWJB/exec";
 const LS_KEYS = ["sp_db_v1", "sp_logo_v1"]; // por si tu código viejo las usaba
 const isAdmin = new URLSearchParams(location.search).get("admin") === "1";
 let DB = { categories: [], towns: [], pros: [] };
