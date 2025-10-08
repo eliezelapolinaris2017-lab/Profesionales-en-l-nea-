@@ -1,0 +1,42 @@
+{
+  "categories": [
+    "Mecánica Automotriz",
+    "Aire Acondicionado Residencial",
+    "Aire Acondicionado Comercial",
+    "Pintor",
+    "Handyman"
+  ],
+  "towns": [
+    "San Juan",
+    "Bayamón",
+    "Carolina",
+    "Ponce",
+    "Mayagüez"
+  ],
+  "pros": [
+    {
+      "name": "José Rivera",
+      "phone": "787-555-1111",
+      "category": "Mecánica Automotriz",
+      "town": "Bayamón",
+      "services": ["Reparación de motores", "Cambio de aceite"],
+      "photo": ""
+    },
+    {
+      "name": "AC Master PR",
+      "phone": "787-555-2222",
+      "category": "Aire Acondicionado Residencial",
+      "town": "San Juan",
+      "services": ["Instalación", "Mantenimiento"],
+      "photo": ""
+    },
+    {
+      "name": "Pintor Luis",
+      "phone": "787-555-3333",
+      "category": "Pintor",
+      "town": "Carolina",
+      "services": ["Pintura interior", "Pintura exterior"],
+      "photo": ""
+    }
+  ]
+}
