@@ -264,3 +264,19 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   setupFilters();
   setupAdminActions();
 });
+function fixDriveUrl(url){
+  if(!url) return "img/avatar-generico.png"; // fallback
+
+  // Asegura https
+  url = url.trim().replace(/^http:\/\//i, "https://");
+
+  // Captura ID en /file/d/ID/view
+  let m = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if(m && m[1]) return `https://drive.google.com/uc?export=view&id=${m[1]}`;
+
+  // Captura ID en ?id=ID
+  m = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if(m && m[1]) return `https://drive.google.com/uc?export=view&id=${m[1]}`;
+
+  return url;
+}
