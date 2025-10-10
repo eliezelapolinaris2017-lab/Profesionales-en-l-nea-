@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Admin – ServiciosPRO</title>
+  <link rel="stylesheet" href="admin.css">
+  <meta name="theme-color" content="#111111">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">SP</div>
+      <span class="brand-name">SERVICIOS <span class="brand-accent">PRO</span> · Admin</span>
+    </div>
+    <nav class="top-actions">
+      <a class="btn outline" href="../index.html">Ver sitio</a>
+    </nav>
+  </header>
+
+  <!-- LOGIN -->
+  <section id="loginBox" class="card">
+    <h2>Acceso</h2>
+    <p>Escribe la contraseña de administrador:</p>
+    <input id="adminPass" type="password" placeholder="Contraseña">
+    <div class="row">
+      <button id="btnLogin" class="btn primary">Entrar</button>
+    </div>
+    <p class="hint">* Contraseña por defecto: <b>132115</b> (puedes cambiarla en Config).</p>
+  </section>
+
+  <!-- PANEL -->
+  <main id="panel" class="hidden">
+    <nav class="tabs card">
+      <button class="tab active" data-tab="sync">Sincronizar</button>
+      <button class="tab" data-tab="data">Profesionales</button>
+      <button class="tab" data-tab="bg">Fondo</button>
+      <button class="tab" data-tab="config">Config</button>
+    </nav>
+
+    <!-- SYNC -->
+    <section class="tabpane" data-pane="sync">
+      <div class="card">
+        <h2>Sincronizar con Google Sheets</h2>
+        <div class="row">
+          <button id="btnPull" class="btn">Cargar desde Sheets</button>
+          <button id="btnPushItems" class="btn">Subir SOLO profesionales</button>
+          <button id="btnPushAll" class="btn primary">Subir TODO (profesionales + fondo)</button>
+        </div>
+        <p class="hint">Conecta al mismo Apps Script /exec del sitio público.</p>
+      </div>
+    </section>
+
+    <!-- DATA -->
+    <section class="tabpane hidden" data-pane="data">
+      <div class="card">
+        <h2>Nuevo / Editar profesional</h2>
+        <div class="grid">
+          <input id="p_nombre"      placeholder="Nombre">
+          <input id="p_telefono"    placeholder="Teléfono">
+          <input id="p_categoria"   placeholder="Categoría">
+          <input id="p_pueblo"      placeholder="Pueblo">
+          <input id="p_whatsapp"    placeholder="Whatsapp (link o número)">
+          <input id="p_foto"        placeholder="Foto (URL o ID de Drive)">
+          <select id="p_activo">
+            <option value="">Activo?</option>
+            <option>SI</option>
+            <option>NO</option>
+          </select>
+          <input id="p_servicios"   placeholder="Servicios (coma separada)">
+          <textarea id="p_descripcion" rows="3" placeholder="Descripción"></textarea>
+        </div>
+        <div class="row">
+          <button id="btnAdd" class="btn primary">Guardar en base local</button>
+          <button id="btnNew" class="btn outline">Nuevo registro</button>
+        </div>
+        <p class="hint">La base local se guarda en este navegador. Luego usa “Subir SOLO profesionales”.</p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <input id="q" class="full" placeholder="Buscar nombre / categoría / pueblo / servicios">
+          <button id="btnSearch" class="btn">Buscar</button>
+          <button id="btnReset" class="btn outline">Reset</button>
+          <span id="count" class="muted"></span>
+        </div>
+        <div id="list" class="cards"></div>
+      </div>
+    </section>
+
+    <!-- BG -->
+    <section class="tabpane hidden" data-pane="bg">
+      <div class="card">
+        <h2>Fondo del sitio</h2>
+        <div class="grid">
+          <select id="bgMode">
+            <option value="single">Imagen única</option>
+            <option value="collage">Collage (múltiples)</option>
+          </select>
+          <input id="bgUrls" placeholder="URLs separadas por coma (,)">
+          <div class="range">
+            <label>Opacidad <span id="bgOpacityVal"></span></label>
+            <input id="bgOpacity" type="range" min="0" max="1" step="0.05">
+          </div>
+          <div class="range">
+            <label>Blur (px) <span id="bgBlurVal"></span></label>
+            <input id="bgBlur" type="range" min="0" max="20" step="1">
+          </div>
+        </div>
+        <div class="row">
+          <button id="btnPreviewBg" class="btn">Previsualizar</button>
+          <button id="btnSaveCfg"  class="btn primary">Guardar Config (Sheets)</button>
+        </div>
+        <div class="previewBox">
+          <div id="bgPreview" class="bgPreview"></div>
+        </div>
+        <p class="hint">Pega URLs públicas (pueden ser de tu repo o de Drive con permiso “cualquiera con el vínculo”).</p>
+      </div>
+    </section>
+
+    <!-- CONFIG -->
+    <section class="tabpane hidden" data-pane="config">
+      <div class="card">
+        <h2>Configuración</h2>
+        <div class="grid">
+          <input id="endpoint" placeholder="URL del WebApp /exec">
+          <input id="newPass" type="password" placeholder="Nueva contraseña admin (mín 4)">
+        </div>
+        <div class="row">
+          <button id="btnSaveEndpoint" class="btn">Guardar endpoint</button>
+          <button id="btnChangePass" class="btn outline">Guardar contraseña</button>
+          <button id="btnLogout" class="btn outline">Cerrar sesión</button>
+        </div>
+        <p class="hint">El endpoint y la contraseña se guardan en <code>localStorage</code> de este navegador.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
