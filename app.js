@@ -1,6 +1,6 @@
 /* ======== CONFIG ======== */
 // Tu Apps Script /exec (el que me diste)
-const REMOTE_JSON_URL = 'https://script.google.com/macros/s/AKfycbzQyHuDMsJAciqIb8Mm96Jt-k7xH8JxzR6z7Vn91xVxXmfukYyhqxBN26BncYPJHXsQ/exec';
+const REMOTE_JSON_URL = 'https://corsproxy.io/?https://script.google.com/macros/s/AKfycbzQyHuDMsJAciqIb8Mm96Jt-k7xH8JxzR6z7Vn91xVxXmfukYyhqxBN26BncYPJHXsQ/exec';
 
 // Contraseña admin (solo cliente, se compara por hash)
 const ADMIN_PASSWORD = '132115';
