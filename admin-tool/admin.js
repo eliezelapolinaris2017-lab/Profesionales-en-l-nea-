@@ -1,5 +1,5 @@
 /** ====== CONFIG INICIAL ====== **/
-const DEFAULT_ENDPOINT = 'https://corsproxy.io/?https://script.google.com/macros/s/AKfycbx0zYjeKyOsXz6ZIjbGB9SjqXMVaXiABATYwKGHRi4dzJPlDc7_gCDL-o1JKDuzWPMY/exec';
+const DEFAULT_ENDPOINT = 'https://corsproxy.io/?https://script.google.com/macros/s/AKfycbxcrTp7A9-BVT-sEUU-24rxpb8mvAbyik0lZsWfacK_F7myl_dZ7sZe9qj3SpegjBjY/exec';
 const DEFAULT_PASS     = '132115';
 
 const KEY_ENDPOINT = 'admin.endpoint';
